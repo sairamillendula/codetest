@@ -1,0 +1,31 @@
+
+<h1 align="center">Update Roles</h1>
+
+<div class="container">
+  <div class="row col-md-12 custyle">
+    <table class="table table-striped custab">
+	<%= form_for :role, :url => {:action => 'update_roles'} do |f|-%>
+      <thead>
+           <tr>
+          <th>Name</th>
+          <th>Hide</th>
+        </tr>
+      </thead>
+      <tbody>
+      	<% if @roles.present? %>
+	        <% @roles.each do |role| %>
+      			<%= fields_for "role[]", role do |r| %>
+	          <tr>
+	            <td><%= role.name %></td>
+     			<td><%= r.check_box :hide %></td>
+	          </tr>
+	        <% end %>
+      <% end %>
+	    <% end %>
+      </tbody>
+    </table>
+ 	<%= f.submit 'Update' %>
+<% end %>
+  </div>
+</div>
+

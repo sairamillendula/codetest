@@ -1,0 +1,30 @@
+<h1 align="center">Roles</h1>
+
+<div class="container">
+  <div class="row col-md-12 custyle">
+    <table class="table table-striped custab" id="custom_role_table">
+      <tfoot>
+        <tr>
+          <th>Name</th>
+          <th></th>
+        </tr>
+      </tfoot>
+      <thead>
+           <tr>
+          <th>Name</th>
+          <th>Hidden status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @roles.each do |role| %>
+          <tr>
+            <td><%= role.name %></td>
+            <td><%= role.hide %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+  <%= link_to 'New Role', new_role_path, class: 'btn btn-primary btn-sm pull-right' %>
+  <%= link_to 'Hidden Roles', hide_roles_roles_path, class: 'btn btn-success btn-sm pull-right' %>
+</div>

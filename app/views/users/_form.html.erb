@@ -1,0 +1,62 @@
+<div class="container">
+  <div class="row col-lg-12">
+    <%= form_for(@user , multipart: true) do |form| %>
+      <% if user.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+          <ul>
+          <% user.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+          </ul>
+        </div>
+      <% end %>
+
+      <div class="field col-md-3">
+        <%= form.label :first_name %>
+        <%= form.text_field :first_name , input_html: { class: "form-control", rows: '1'}%>
+      </div>
+
+      <div class="field col-md-3">
+        <%= form.label :last_name %>
+        <%= form.text_field :last_name, input_html: { class: "form-control", rows: '1'} %>
+      </div>
+
+      <div class="field col-md-3">
+        <%= form.label :email %>
+        <%= form.text_field :email, input_html: { class: "form-control", rows: '1'} %>
+      </div>
+
+      <div class="field col-md-3">
+        <%= form.label :roles %><br>
+        <%= select_tag("user[role_ids][]", options_for_select(Role.active.collect { |role| [role.name, role.id] }), {:multiple=>true, :size=>5}) %>
+      </div>
+
+      <div class="field col-md-3">
+        <%= form.label :user_image %><br>
+        <%= form.file_field :avatars, multiple: true %>
+      </div>
+
+      <table class='table'>
+        <thead>
+          <tr>
+            <th>Meta Key</th>
+            <th>Meta Value</th>
+          </tr>
+        </thead>
+        <tbody class='fields'>
+          <%= form.fields_for :user_metum, UserMetum.new do |builder| %>
+            <%= render "user_metum", :f => builder %>
+          <% end %>
+        </tbody>
+      </table>
+      <%= link_to_add_row('Add Meta', form, :user_metum, class: 'btn btn-primary btn-sm') %><br />
+
+      <div class="actions">
+        <br>
+        <%= form.submit nil, class: 'btn btn-success btn-sm' %>
+      </div>
+    <% end %>
+  </div>
+</div>

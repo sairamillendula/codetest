@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+<h1 align="center">Users</h1>
+
+<div class="container">
+  <div class="row col-md-12 custyle">
+    <table id="custom_field_table" class="table table-hover table-striped">
+      <thead>
+        <tr>
+          <th> User Image</th>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>Email</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @users.each do |user| %>
+          <tr>
+            <td><%= image_tag(user.avatars.first.url, size: "35x30") if user.avatars.present? %></td>
+            <td><%= user.first_name %></td>
+            <td><%= user.last_name %></td>
+            <td><%= user.email %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+  <%= link_to 'New User', new_user_path , class: 'btn btn-primary btn-sm pull-right' %>
+</div>
