@@ -1,28 +1,32 @@
-<p id="notice"><%= notice %></p>
+<div class="container">
+  <div class="row col-lg-12">
+    <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>First name:</strong>
-  <%= @user.first_name %>
-</p>
+    <p>
+      <strong>First name:</strong>
+      <%= @user.first_name %>
+    </p>
 
-<p>
-  <strong>Last name:</strong>
-  <%= @user.last_name %>
-</p>
+    <p>
+      <strong>Last name:</strong>
+      <%= @user.last_name %>
+    </p>
 
-<p>
-  <strong>Email:</strong>
-  <%= @user.email %>
-</p>
+    <p>
+      <strong>Email:</strong>
+      <%= @user.email %>
+    </p>
 
-<p>
-  <strong>Roles:</strong>
-  <%= @user.roles.pluck(:name) %>
-</p>
+    <p>
+      <strong>Roles:</strong>
+      <%= @user.roles.pluck(:name) %>
+    </p>
 
-<p>
-	<label>My Avatar</label>
-	<% @user.avatars.each do |avatar| %>
-		<%= image_tag(avatar.url) %> 
-	<% end%>
-</p>
+    <p>
+      <label>My Avatar</label>
+      <% @user.avatars.each do |avatar| %>
+        <%= image_tag(avatar.url) %>
+      <% end%>
+    </p>
+  </div>
+</div>
